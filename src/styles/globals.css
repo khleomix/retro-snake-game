@@ -2,7 +2,39 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
 html,
 body {
-  @apply p-0 m-0 font-sans;
+	@apply p-0 m-0 font-sans bg-tertiary;
+}
+
+* {
+	@apply box-border;
+}
+
+a {
+	@apply text-secondary no-underline hover:text-black focus:text-black transition-colors;
+}
+
+.btn-primary {
+	border-bottom: 6px inset rgba(0,0,0,.5);
+	border-left: 6px inset rgba(0,0,0,.5);
+	border-right: 6px inset rgba(255,255,255,.5);
+	border-top: 6px inset rgba(255,255,255,.5);
+}
+
+.btn-secondary {
+	border-bottom: 6px inset rgba(0,0,0,.5);
+	border-left: 6px inset rgba(0,0,0,.5);
+	border-right: 6px inset rgba(255,255,255,.5);
+	border-top: 6px inset rgba(255,255,255,.5);
+}
+
+.snake-dot {
+	@apply bg-secondary border border-primary h-4 w-4 absolute;
+}
+
+.snake-food {
+	@apply bg-red-100 border border-primary h-4 w-4 absolute;
 }
