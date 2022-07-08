@@ -13,10 +13,6 @@ body {
 	@apply box-border;
 }
 
-a {
-	@apply text-secondary no-underline hover:text-black focus:text-black transition-colors;
-}
-
 .btn-primary {
 	border-bottom: 6px inset rgba(0,0,0,.5);
 	border-left: 6px inset rgba(0,0,0,.5);
@@ -31,10 +27,11 @@ a {
 	border-top: 6px inset rgba(255,255,255,.5);
 }
 
-.snake-dot {
-	@apply bg-secondary border border-primary h-4 w-4 absolute;
-}
-
-.snake-food {
-	@apply bg-red-100 border border-primary h-4 w-4 absolute;
+.snake-food::before {
+	content: url('../../public/food.svg');
+	height: 20px;
+	width: 20px;
+	position: absolute;
+	top: -22px;
+	left: -7px;
 }

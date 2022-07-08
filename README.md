@@ -7,9 +7,9 @@ A Nextjs recreation of the snake game we all played and loved back in the day.
 
 - [@khleomix](https://github.com/khleomix)
 
-## Demo
+## Screenshots
 
-TBA
+<img src="./public/banner.jpg" width="700" title="Retro Snake Game" />
 
 ## Run Locally
 

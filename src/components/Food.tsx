@@ -8,7 +8,7 @@ export default function Food(props: FoodProps) {
         top: `${props.dot[1]}%`
     }
     return (
-        <div className="snake-food" style={styleFood}>
+        <div className="snake-food absolute w-4 h-4 block" style={styleFood}>
         </div>
     )
 }
