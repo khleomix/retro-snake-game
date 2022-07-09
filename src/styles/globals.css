@@ -2,11 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
 html,
 body {
 	@apply p-0 m-0 font-sans bg-tertiary overflow-x-hidden;
+
+	font-family: 'Press Start 2P';
 }
 
 .game-box::before {
@@ -42,6 +44,6 @@ body {
 	height: 16px;
 	width: 16px;
 	position: absolute;
-	top: -14px;
-	left: -4px;
+	top: -17px;
+	left: -6px;
 }
