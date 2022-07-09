@@ -148,7 +148,7 @@ class Game extends React.Component {
 				</div>
 
 		  		{this.state.play ?
-					<div className={`h-4/6 w-[80vw] sm:w-[50vw] relative ${this.state.pause ? "bg-gray-100" : "bg-primary"} rounded-xl`}>
+					<div className={`game-box h-4/6 w-[80vw] sm:w-[50vw] relative bg-opacity-70 ${this.state.pause ? "bg-gray-100" : "bg-primary"} rounded-xl`}>
 						<Snake snakePixels={this.state.snakePixels}/>
 						<Food dot={this.state.food}/>
 					</div>

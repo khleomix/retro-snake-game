@@ -6,7 +6,18 @@
 
 html,
 body {
-	@apply p-0 m-0 font-sans bg-tertiary;
+	@apply p-0 m-0 font-sans bg-tertiary overflow-x-hidden;
+}
+
+.game-box::before {
+	background-image: repeating-linear-gradient(to bottom, #0000, #0000 12px, #27430e78 12px, #27430e78 14px),
+                    repeating-linear-gradient(to right, #bac70029, #bac70029 12px, #27430e78 12px, #27430e78 14px);
+	background-position: -4px 20px;
+	content: '';
+	height: 100%;
+	width: 100%;
+	opacity: 0.25;
+	display: block;
 }
 
 * {
