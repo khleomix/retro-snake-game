@@ -1,5 +1,5 @@
-import { useState } from "react";
-import Game from "../components/Game";
+import { useState } from 'react';
+import Game from '../components/Game';
 
 export default function Home() {
   const [play, setPlay] = useState(false);

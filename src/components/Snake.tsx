@@ -12,9 +12,8 @@ export default function Snake( props: SnakeProps ) {
                 }
                 return (
                     <div className="snake-dot bg-secondary border border-primary h-4 w-4 absolute" key={index} style={dotPos}></div>
-
                 )
-            })}
+            } ) }
         </div>
     )
 }
