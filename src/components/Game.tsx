@@ -13,7 +13,7 @@ const getRandomCoords = () => {
 
 const inicialState = {
 	food: getRandomCoords(),
-	speed: 500,
+	speed: 100,
 	pause: false,
 	play: false,
 	gameOver: "",
@@ -54,7 +54,6 @@ class Game extends React.Component {
 				this.setState({direction: 'RIGHT'});
 				break;
 		}
-		console.log(this.state.direction)
 	}
 
 	moveSnake = () => {
