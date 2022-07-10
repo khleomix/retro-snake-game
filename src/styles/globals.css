@@ -6,7 +6,7 @@
 
 html,
 body {
-	@apply p-0 m-0 text-lg bg-tertiary overflow-x-hidden text-center;
+	@apply p-0 m-0 text-lg bg-tertiary overflow-x-hidden text-center overflow-hidden;
 
 	font-family: 'VT323', monospace;
 }
