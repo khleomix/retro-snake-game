@@ -25,17 +25,18 @@ const initialState = {
 }
 
 
-//const Arcade = () => {
-//  	const [play, { stop }] = useSound('https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3');
-//
-//  	return (
-//    	<button onMouseEnter={() => play()} onMouseLeave={() => stop()} className="btn-primary bg-red-100 hover:bg-red-200 focus:bg-red-200 box-border text-white font-bold text-2xl m-4 min-w-[100px] p-4 uppercase w-auto transition-all duration-75" >
-//      		<span role="img" aria-label="trumpet">
-//        		🎺
-//      		</span>
-//    	</button>
-//  	);
-//};
+// Add sound.
+const Arcade = () => {
+  	const [play, { stop }] = useSound('../../public/start.mp3');
+
+  	return (
+    	<button onMouseEnter={() => play()} onMouseLeave={() => stop()} className="btn-primary bg-red-100 hover:bg-red-200 focus:bg-red-200 box-border text-white font-bold text-2xl m-4 min-w-[100px] p-4 uppercase w-auto transition-all duration-75" >
+      		<span role="img" aria-label="trumpet">
+        		🎺
+      		</span>
+    	</button>
+  	);
+};
 
 
 class Game extends React.Component {
@@ -163,12 +164,12 @@ class Game extends React.Component {
 				</div>
 
 		  		{this.state.play ?
-					<div className={`game-box outline outline-secondary outline-4 h-4/6 w-[80vw] sm:w-[50vw] relative ${this.state.pause ? "bg-gray-100" : "bg-primary"}`}>
+					<div className={`game-box outline outline-secondary outline-4 h-4/6 w-[90vw] lg:w-[80vw] relative ${this.state.pause ? "bg-gray-100" : "bg-primary"}`}>
 						<Snake snakePixels={this.state.snakePixels}/>
 						<Food dot={this.state.food}/>
 					</div>
 				:
-					<div className="text-pink-200 text-3xl font-bold text-center w-full">
+					<div className="text-pink-200 text-3xl font-bold text-center w-full py-2 px-4">
 						<span>{this.state.gameOver}</span>
 					</div>
 		  		}
@@ -188,6 +189,7 @@ class Game extends React.Component {
 					:
 						<></>
 					}
+					<Arcade />
 				</div>
 				<div className="relative flex item-center justify-center w-full text-center">
 					<small className="text-primary text-base p-4">A retro snake game made with Nextjs and React by <a href="https://khleomix.com/" target="_blank" rel="noreferrer" className="text-pink-100 hover:text-pink-200">JC Palmes</a></small>
