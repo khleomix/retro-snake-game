@@ -11,7 +11,7 @@ export default function Snake( props: SnakeProps ) {
                     top: `${dot[1]}%`
                 }
                 return (
-                    <div className="snake-dot bg-secondary border border-primary h-4 w-4 absolute" key={index} style={dotPos}></div>
+                    <div className="snake-dot bg-secondary h-[2.645%] w-[2%] absolute" key={index} style={dotPos}></div>
                 )
             } ) }
         </div>

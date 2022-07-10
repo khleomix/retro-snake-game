@@ -2,6 +2,7 @@ import React from 'react';
 import Food from '../components/Food';
 import Snake from '../components/Snake';
 import Score from './Score';
+import useSound from 'use-sound';
 
 const getRandomCoords = () => {
 	let min = 1;
@@ -11,7 +12,7 @@ const getRandomCoords = () => {
 	return [x,y]
 }
 
-const inicialState = {
+const initialState = {
 	food: getRandomCoords(),
 	speed: 100,
 	pause: false,
@@ -23,8 +24,22 @@ const inicialState = {
 	]
 }
 
+
+//const Arcade = () => {
+//  	const [play, { stop }] = useSound('https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3');
+//
+//  	return (
+//    	<button onMouseEnter={() => play()} onMouseLeave={() => stop()} className="btn-primary bg-red-100 hover:bg-red-200 focus:bg-red-200 box-border text-white font-bold text-2xl m-4 min-w-[100px] p-4 uppercase w-auto transition-all duration-75" >
+//      		<span role="img" aria-label="trumpet">
+//        		🎺
+//      		</span>
+//    	</button>
+//  	);
+//};
+
+
 class Game extends React.Component {
-	state = inicialState
+	state = initialState
 
 	componentDidMount(): void {
 		setInterval(this.moveSnake, this.state.speed)
@@ -131,8 +146,8 @@ class Game extends React.Component {
 	}
 
 	onGameOver() {
-		this.setState( inicialState );
-		this.setState( {gameOver: `Game Over! You got ${this.state.snakePixels.length}. Try Again?`} )
+		this.setState( initialState );
+		this.setState( {gameOver: `Game Over! Score: ${this.state.snakePixels.length}. Better luck next time.`} )
 	}
 
 	render() {
@@ -148,7 +163,7 @@ class Game extends React.Component {
 				</div>
 
 		  		{this.state.play ?
-					<div className={`h-4/6 w-[80vw] sm:w-[50vw] relative ${this.state.pause ? "bg-gray-100" : "bg-primary"} rounded-xl`}>
+					<div className={`game-box outline outline-secondary outline-4 h-4/6 w-[80vw] sm:w-[50vw] relative ${this.state.pause ? "bg-gray-100" : "bg-primary"}`}>
 						<Snake snakePixels={this.state.snakePixels}/>
 						<Food dot={this.state.food}/>
 					</div>
@@ -159,15 +174,15 @@ class Game extends React.Component {
 		  		}
 
 		  		<div className="flex my-2 justify-center">
-					<button className="btn-primary bg-red-100 hover:bg-red-200 focus:bg-red-200 box-border text-white font-bold text-2xl m-4 min-w-[100px] p-4 uppercase w-auto transition-all duration-75" onClick={ () => {
+					<button className="btn-primary bg-red-100 hover:bg-red-200 focus:bg-red-200 box-border text-white font-bold text-3xl m-4 min-w-[100px] p-4 uppercase w-auto transition-all duration-75" onClick={ () => {
 						if ( this.state.play ) {
-							this.setState( inicialState );
+							this.setState( initialState );
 						} else this.setState( {play: true} )
 						}
 					}>{this.state.play ? "End Game" : "Play Game"}</button>
 
 					{this.state.play ?
-						<button className={`ml-2 btn-secondary box-border text-white font-bold text-2xl m-4 min-w-[100px] p-4 uppercase w-auto transition-all duration-75 ${this.state.pause ? "bg-gray-200 hover:bg-gray-100 focus:bg-gray-100" : "bg-blue-100 hover:bg-blue-200 focus:bg-blue-200"}`} onClick={ () => {
+						<button className={`ml-2 btn-secondary box-border text-white font-bold text-3xl m-4 min-w-[100px] p-4 uppercase w-auto transition-all duration-75 ${this.state.pause ? "bg-gray-200 hover:bg-gray-100 focus:bg-gray-100" : "bg-blue-100 hover:bg-blue-200 focus:bg-blue-200"}`} onClick={ () => {
 							this.setState( {pause: this.state.pause ? false : true} )
 						}}>{this.state.pause ? "Resume" : "Pause Game"}</button>
 					:

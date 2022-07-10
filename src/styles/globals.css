@@ -2,11 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 
 html,
 body {
-	@apply p-0 m-0 font-sans bg-tertiary;
+	@apply p-0 m-0 text-lg bg-tertiary overflow-x-hidden;
+
+	font-family: 'VT323', monospace;
+}
+
+.game-box::before {
+	@apply block h-full opacity-[0.1] w-full;
+	background-image: repeating-linear-gradient(to bottom, #0000, #0000 2px, #27430e78 2px, #27430e78 4px),
+                    repeating-linear-gradient(to right, #bac70029, #bac70029 2px, #27430e78 2px, #27430e78 4px);
+	content: '';
 }
 
 * {
@@ -28,10 +37,7 @@ body {
 }
 
 .snake-food::before {
+	@apply h-4 -left-[6px] absolute -top-[17px] w-4;
+
 	content: url('../../public/food.svg');
-	height: 20px;
-	width: 20px;
-	position: absolute;
-	top: -22px;
-	left: -7px;
 }
