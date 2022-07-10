@@ -2,7 +2,6 @@ import React from 'react';
 import Food from '../components/Food';
 import Snake from '../components/Snake';
 import Score from './Score';
-import Start from './Start';
 import useSound from 'use-sound';
 
 const getRandomCoords = () => {
