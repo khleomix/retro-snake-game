@@ -2,6 +2,7 @@ import React from 'react';
 import Food from '../components/Food';
 import Snake from '../components/Snake';
 import Score from './Score';
+import Start from './Start';
 import useSound from 'use-sound';
 
 const getRandomCoords = () => {
@@ -15,6 +16,7 @@ const getRandomCoords = () => {
 const initialState = {
 	food: getRandomCoords(),
 	speed: 100,
+	sound: "",
 	pause: false,
 	play: false,
 	gameOver: "",
@@ -25,19 +27,14 @@ const initialState = {
 }
 
 
-// Add sound.
-const Arcade = () => {
-  	const [play, { stop }] = useSound('../../public/start.mp3');
+// Add sound effects.
+const FooterSfx = () => {
+  	const [play, { stop }] = useSound('/wonderful.mp3');
 
   	return (
-    	<button onMouseEnter={() => play()} onMouseLeave={() => stop()} className="btn-primary bg-red-100 hover:bg-red-200 focus:bg-red-200 box-border text-white font-bold text-2xl m-4 min-w-[100px] p-4 uppercase w-auto transition-all duration-75" >
-      		<span role="img" aria-label="trumpet">
-        		🎺
-      		</span>
-    	</button>
+		<small className="text-primary text-base p-3">A retro snake game made with Nextjs and React by <a href="https://khleomix.com/" target="_blank" rel="noreferrer" className="text-pink-100 hover:text-pink-200" onMouseEnter={() => play()} onMouseLeave={() => stop()}>JC Palmes</a></small>
   	);
 };
-
 
 class Game extends React.Component {
 	state = initialState
@@ -164,7 +161,7 @@ class Game extends React.Component {
 				</div>
 
 		  		{this.state.play ?
-					<div className={`game-box outline outline-secondary outline-4 h-4/6 w-[90vw] lg:w-[80vw] relative ${this.state.pause ? "bg-gray-100" : "bg-primary"}`}>
+					<div className={`game-box outline outline-secondary outline-4 h-4/6 w-[90vw] lg:w-[50vw] relative ${this.state.pause ? "bg-gray-100" : "bg-primary"}`}>
 						<Snake snakePixels={this.state.snakePixels}/>
 						<Food dot={this.state.food}/>
 					</div>
@@ -174,7 +171,7 @@ class Game extends React.Component {
 					</div>
 		  		}
 
-		  		<div className="flex my-2 justify-center">
+		  		<div className="flex my-1 justify-center">
 					<button className="btn-primary bg-red-100 hover:bg-red-200 focus:bg-red-200 box-border text-white font-bold text-2xl m-4 min-w-[100px] px-4 py-3 uppercase w-auto transition-all duration-75" onClick={ () => {
 						if ( this.state.play ) {
 							this.setState( initialState );
@@ -189,10 +186,9 @@ class Game extends React.Component {
 					:
 						<></>
 					}
-					<Arcade />
 				</div>
 				<div className="relative flex item-center justify-center w-full text-center">
-					<small className="text-primary text-base p-4">A retro snake game made with Nextjs and React by <a href="https://khleomix.com/" target="_blank" rel="noreferrer" className="text-pink-100 hover:text-pink-200">JC Palmes</a></small>
+					<FooterSfx />
 				</div>
 	  		</div>
 		)
