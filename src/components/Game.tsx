@@ -168,13 +168,13 @@ class Game extends React.Component {
 						<Food dot={this.state.food}/>
 					</div>
 				:
-					<div className="text-white font-bold flex items-center">
-						{this.state.gameOver}
+					<div className="text-pink-200 text-3xl font-bold text-center w-full">
+						<span>{this.state.gameOver}</span>
 					</div>
 		  		}
 
 		  		<div className="flex my-2 justify-center">
-					<button className="btn-primary bg-red-100 hover:bg-red-200 focus:bg-red-200 box-border text-white font-bold text-3xl m-4 min-w-[100px] p-4 uppercase w-auto transition-all duration-75" onClick={ () => {
+					<button className="btn-primary bg-red-100 hover:bg-red-200 focus:bg-red-200 box-border text-white font-bold text-2xl m-4 min-w-[100px] px-4 py-3 uppercase w-auto transition-all duration-75" onClick={ () => {
 						if ( this.state.play ) {
 							this.setState( initialState );
 						} else this.setState( {play: true} )
@@ -182,15 +182,15 @@ class Game extends React.Component {
 					}>{this.state.play ? "End Game" : "Play Game"}</button>
 
 					{this.state.play ?
-						<button className={`ml-2 btn-secondary box-border text-white font-bold text-3xl m-4 min-w-[100px] p-4 uppercase w-auto transition-all duration-75 ${this.state.pause ? "bg-gray-200 hover:bg-gray-100 focus:bg-gray-100" : "bg-blue-100 hover:bg-blue-200 focus:bg-blue-200"}`} onClick={ () => {
+						<button className={`ml-2 btn-secondary box-border text-white font-bold text-2xl m-4 min-w-[100px] px-4 py-3 uppercase w-auto transition-all duration-75 ${this.state.pause ? "bg-gray-200 hover:bg-gray-100 focus:bg-gray-100" : "bg-blue-100 hover:bg-blue-200 focus:bg-blue-200"}`} onClick={ () => {
 							this.setState( {pause: this.state.pause ? false : true} )
 						}}>{this.state.pause ? "Resume" : "Pause Game"}</button>
 					:
 						<></>
 					}
 				</div>
-				<div className="absolute bottom-3 w-full text-center left-0">
-					<small className="text-primary text-lg m-4 p-4">A retro snake game made with Nextjs and React by <a href="https://khleomix.com/" target="_blank" rel="noreferrer" className="text-pink-100 hover:text-pink-200">JC Palmes</a></small>
+				<div className="relative flex item-center justify-center w-full text-center">
+					<small className="text-primary text-base p-4">A retro snake game made with Nextjs and React by <a href="https://khleomix.com/" target="_blank" rel="noreferrer" className="text-pink-100 hover:text-pink-200">JC Palmes</a></small>
 				</div>
 	  		</div>
 		)

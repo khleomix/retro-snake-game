@@ -14,8 +14,8 @@ export default function Score( props: ScoreProps ) {
 	},[bestScore, props.score, setBestScore] )
 	return (
 		<div className="p-2 w-full flex justify-between">
-			<p className="font-bold text-2xl text-white">Score: {props.score}</p>
-			<p className="font-bold text-2xl text-white">High Score: {bestScore}</p>
+			<p className="font-bold text-xl text-white">Score: {props.score}</p>
+			<p className="font-bold text-xl text-white">High Score: {bestScore}</p>
 		</div>
 	)
 }
