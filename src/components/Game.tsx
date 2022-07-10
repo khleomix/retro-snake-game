@@ -2,6 +2,7 @@ import React from 'react';
 import Food from '../components/Food';
 import Snake from '../components/Snake';
 import Score from './Score';
+import useSound from 'use-sound';
 
 const getRandomCoords = () => {
 	let min = 1;
@@ -11,7 +12,7 @@ const getRandomCoords = () => {
 	return [x,y]
 }
 
-const inicialState = {
+const initialState = {
 	food: getRandomCoords(),
 	speed: 100,
 	pause: false,
@@ -23,8 +24,23 @@ const inicialState = {
 	]
 }
 
+
+const Arcade = () => {
+  	//const [play, { stop }] = useSound('https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3');
+  	const [play, { stop }] = useSound('https://github.com/khleomix/retro-snake-game/blob/feature/snake-styles/public/start.mp3');
+
+  	return (
+    	<button onMouseEnter={() => play()} onMouseLeave={() => stop()}>
+      		<span role="img" aria-label="trumpet">
+        		🎺
+      		</span>
+    	</button>
+  	);
+};
+
+
 class Game extends React.Component {
-	state = inicialState
+	state = initialState
 
 	componentDidMount(): void {
 		setInterval(this.moveSnake, this.state.speed)
@@ -131,7 +147,7 @@ class Game extends React.Component {
 	}
 
 	onGameOver() {
-		this.setState( inicialState );
+		this.setState( initialState );
 		this.setState( {gameOver: `Game Over! Score: ${this.state.snakePixels.length}. Better luck next time.`} )
 	}
 
@@ -161,7 +177,7 @@ class Game extends React.Component {
 		  		<div className="flex my-2 justify-center">
 					<button className="btn-primary bg-red-100 hover:bg-red-200 focus:bg-red-200 box-border text-white font-bold text-xl m-4 min-w-[100px] p-4 uppercase w-auto transition-all duration-75" onClick={ () => {
 						if ( this.state.play ) {
-							this.setState( inicialState );
+							this.setState( initialState );
 						} else this.setState( {play: true} )
 						}
 					}>{this.state.play ? "End Game" : "Play Game"}</button>
@@ -173,6 +189,7 @@ class Game extends React.Component {
 					:
 						<></>
 					}
+					<Arcade />
 				</div>
 	  		</div>
 		)
