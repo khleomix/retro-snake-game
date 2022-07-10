@@ -189,6 +189,9 @@ class Game extends React.Component {
 						<></>
 					}
 				</div>
+				<div className="absolute bottom-3 w-full text-center left-0">
+					<small className="text-primary text-lg m-4 p-4">A retro snake game made with Nextjs and React by <a href="https://khleomix.com/" target="_blank" rel="noreferrer" className="text-pink-100 hover:text-pink-200">JC Palmes</a></small>
+				</div>
 	  		</div>
 		)
 	}
