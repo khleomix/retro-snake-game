@@ -22,6 +22,10 @@ module.exports = {
 				100: '#7C7C7C',
 				200: '#BCBCBC',
 			},
+			pink: {
+				100: '#ff007f',
+				200: '#F76BC0',
+			},
 			transparent: 'transparent',
 			current: 'currentColor',
 		},
