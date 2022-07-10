@@ -2,23 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 
 html,
 body {
-	@apply p-0 m-0 font-sans bg-tertiary overflow-x-hidden;
+	@apply p-0 m-0 text-lg bg-tertiary overflow-x-hidden;
 
-	font-family: 'Press Start 2P';
+	font-family: 'VT323', monospace;
 }
 
 .game-box::before {
-	background-image: repeating-linear-gradient(to bottom, #0000, #0000 12px, #27430e78 12px, #27430e78 14px),
-                    repeating-linear-gradient(to right, #bac70029, #bac70029 12px, #27430e78 12px, #27430e78 14px);
+	@apply block h-full opacity-[0.1] w-full;
+	background-image: repeating-linear-gradient(to bottom, #0000, #0000 2px, #27430e78 2px, #27430e78 4px),
+                    repeating-linear-gradient(to right, #bac70029, #bac70029 2px, #27430e78 2px, #27430e78 4px);
 	content: '';
-	height: 100%;
-	width: 100%;
-	opacity: 0.1;
-	display: block;
 }
 
 * {
@@ -40,10 +37,7 @@ body {
 }
 
 .snake-food::before {
+	@apply h-4 -left-[6px] absolute -top-[17px] w-4;
+
 	content: url('../../public/food.svg');
-	height: 16px;
-	width: 16px;
-	position: absolute;
-	top: -17px;
-	left: -6px;
 }
