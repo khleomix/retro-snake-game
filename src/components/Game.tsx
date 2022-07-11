@@ -161,7 +161,7 @@ class Game extends React.Component {
 				</div>
 
 		  		{this.state.play ?
-					<div className={`game-box outline outline-secondary outline-4 h-4/6 w-[90vw] lg:w-[50vw] relative ${this.state.pause ? "bg-gray-100" : "bg-primary"}`}>
+					<div className={`game-box before:bg-game-box outline outline-secondary outline-4 h-4/6 w-[90vw] lg:w-[50vw] relative before:block before:h-full before:opacity-[0.1] before:w-full before:text-center ${this.state.pause ? "bg-gray-100" : "bg-primary"}`}>
 						<Snake snakePixels={this.state.snakePixels}/>
 						<Food dot={this.state.food}/>
 					</div>
@@ -181,7 +181,7 @@ class Game extends React.Component {
 		  		}
 
 		  		<div className="flex my-1 justify-center">
-					<button className="btn-primary bg-red-100 hover:bg-red-200 focus:bg-red-200 box-border text-white font-bold text-2xl m-4 min-w-[100px] px-4 py-1 uppercase w-auto transition-all duration-75" onClick={ () => {
+					<button className="btn-primary border-[inset] border-[6px] border-b-inset-black border-l-inset-black border-r-inset-gray border-t-inset-gray bg-red-100 hover:bg-red-200 focus:bg-red-200 box-border text-white font-bold text-2xl m-4 min-w-[120px] px-4 py-1 uppercase w-auto transition-all duration-75" onClick={ () => {
 						if ( this.state.play ) {
 							this.setState( initialState );
 						} else this.setState( {play: true} )
@@ -189,7 +189,7 @@ class Game extends React.Component {
 					}>{this.state.play ? "End" : "Play"}</button>
 
 					{this.state.play ?
-						<button className={`ml-2 btn-secondary box-border text-white font-bold text-2xl m-4 min-w-[100px] px-4 py-1 uppercase w-auto transition-all duration-75 ${this.state.pause ? "bg-gray-200 hover:bg-gray-100 focus:bg-gray-100" : "bg-blue-100 hover:bg-blue-200 focus:bg-blue-200"}`} onClick={ () => {
+						<button className={`ml-2 btn-secondary border-[inset] border-[6px] border-b-inset-black border-l-inset-black border-r-inset-gray border-t-inset-gray box-border text-white font-bold text-2xl m-4 min-w-[120px] px-4 py-1 uppercase w-auto transition-all duration-75 ${this.state.pause ? "bg-gray-200 hover:bg-gray-100 focus:bg-gray-100" : "bg-blue-100 hover:bg-blue-200 focus:bg-blue-200"}`} onClick={ () => {
 							this.setState( {pause: this.state.pause ? false : true} )
 						}}>{this.state.pause ? "Resume" : "Pause"}</button>
 					:
