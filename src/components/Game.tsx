@@ -150,7 +150,7 @@ class Game extends React.Component {
 
 	render() {
 		return (
-	  		<div>
+	  		<main>
 		  		<div className="flex my-2 justify-center">
 					{this.state.play ?
 						<Score score={this.state.snakePixels.length}/>
@@ -199,7 +199,7 @@ class Game extends React.Component {
 				<div className="relative flex item-center justify-center w-full text-center">
 					<FooterSfx />
 				</div>
-	  		</div>
+	  		</main>
 		)
 	}
 }
