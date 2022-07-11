@@ -26,7 +26,6 @@ const initialState = {
 	]
 }
 
-
 // Add sound effects.
 const FooterSfx = () => {
   	const [play, { stop }] = useSound('/wonderful.mp3');
@@ -161,10 +160,25 @@ class Game extends React.Component {
 				</div>
 
 		  		{this.state.play ?
-					<div className={`game-box before:bg-game-box outline outline-secondary outline-4 h-4/6 w-[90vw] lg:w-[50vw] relative before:block before:h-full before:opacity-[0.1] before:w-full before:text-center ${this.state.pause ? "bg-gray-100" : "bg-primary"}`}>
-						<Snake snakePixels={this.state.snakePixels}/>
-						<Food dot={this.state.food}/>
-					</div>
+					<>
+						<div className={`game-box before:bg-game-box outline outline-secondary outline-4 h-4/6 w-[90vw] lg:w-[50vw] relative before:block before:h-full before:opacity-[0.1] before:w-full before:text-center ${this.state.pause ? "bg-gray-100" : "bg-primary"}`}>
+							<Snake snakePixels={this.state.snakePixels}/>
+							<Food dot={this.state.food}/>
+							<div className="controller md:hidden absolute w-32 h-32 z-50 right-0 bottom-0">
+								<Image
+									src="/controller.png"
+									alt="Controller"
+									width={128}
+									height={128}
+									className="opacity-80 relative"
+								/>
+								<button className="btn-up absolute top-2 left-[46px] rounded-md w-9 h-10 hover:bg-black focus:bg-black opacity-20" onClick={() => this.setState( {direction: 'UP'} )} type="button"></button>
+								<button className="btn-right absolute right-[7px] top-[46px] rounded-md w-10 h-9 hover:bg-black focus:bg-black opacity-20" onClick={() => this.setState( {direction: 'RIGHT'} )} type="button"></button>
+								<button className="btn-left absolute left-[7px] top-[46px] rounded-md w-10 h-9 hover:bg-black focus:bg-black opacity-20" onClick={() => this.setState( {direction: 'LEFT'} )} type="button"></button>
+								<button className="btn-down absolute bottom-2 left-[46px] rounded-md w-9 h-10 hover:bg-black focus:bg-black opacity-20" onClick={() => this.setState( {direction: 'DOWN'} )} type="button"></button>
+							</div>
+						</div>
+					</>
 				:
 					<>
 						<div className="text-pink-200 text-3xl font-bold text-center w-full py-2 px-4">
