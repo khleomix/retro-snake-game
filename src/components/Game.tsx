@@ -161,7 +161,7 @@ class Game extends React.Component {
 
 		  		{this.state.play ?
 					<>
-						<div className={`game-box before:bg-game-box outline outline-secondary outline-4 h-4/6 w-[90vw] lg:w-[50vw] relative before:block before:h-full before:opacity-[0.1] before:w-full before:text-center ${this.state.pause ? "bg-gray-100" : "bg-primary"}`}>
+						<div className={`game-box before:bg-game-box outline outline-secondary outline-4 h-96 lg:h-4/6 w-[90vw] lg:w-[50vw] relative before:block before:h-full before:opacity-[0.1] before:w-full before:text-center ${this.state.pause ? "bg-gray-100" : "bg-primary"}`}>
 							<Snake snakePixels={this.state.snakePixels}/>
 							<Food dot={this.state.food}/>
 							<div className="controller md:hidden absolute w-32 h-32 z-50 right-0 bottom-0">
