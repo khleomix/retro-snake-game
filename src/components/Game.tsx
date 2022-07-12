@@ -4,6 +4,7 @@ import Snake from '../components/Snake';
 import Score from './Score';
 import useSound from 'use-sound';
 import Image from 'next/image'
+import { useSwipeable } from "react-swipeable";
 
 const getRandomCoords = () => {
 	let min = 1;
@@ -35,8 +36,36 @@ const FooterSfx = () => {
   	);
 };
 
+  const HandlersBox = () => useSwipeable({
+    onSwiped: ({ dir, event }) => {
+      // NOTE: this stops the propagation of the event
+      // from reaching the document swipe listeners
+      event.stopPropagation();
+
+      setBoxSwipes((s) => [
+        ...s,
+        { dir, timeStamp: Math.floor(event.timeStamp) }
+      ]);
+    },
+    // NOTE: another approach via onSwiping
+    // onSwiping: ({ event }) => event.stopPropagation(),
+    preventDefaultTouchmoveEvent: true
+  });
+
+const handleTouch = (key) => {
+  handleKeyDown({keyCode:key});
+}
+
+const SwipeHandlers = () => useSwipeable({
+  onSwipedLeft: () => handleTouch('37'),
+  onSwipedUp: () => handleTouch('38'),
+  onSwipedRight: () => handleTouch('39'),
+  onSwipedDown: () => handleTouch('40')
+});
+
 class Game extends React.Component {
 	state = initialState
+
 
 	componentDidMount(): void {
 		setInterval(this.moveSnake, this.state.speed)
@@ -208,6 +237,17 @@ class Game extends React.Component {
 						}>Play</button>
 					}
 				</div>
+				{this.state.play ?
+      				<div {...HandlersBox} className="p-2 m-2 border-2 border-primary text-white">
+      					<h4>Swipe here for Box</h4>
+      					<h6>
+      				    	Swipe anywhere to trigger document swipe, BUT if you swipe in the box
+      						we'll attempt to prevent the document swipe
+      				  	</h6>
+      				</div>
+				:
+					<></>
+				}
 				<div className="relative flex item-center justify-center w-full text-center">
 					<FooterSfx />
 				</div>
