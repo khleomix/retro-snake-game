@@ -74,6 +74,7 @@ class Game extends React.Component {
 		onSwipedDown: () => this.setState( {direction: 'DOWN'} ),
 		onSwipedLeft: () => this.setState( {direction: 'LEFT'} ),
 		onSwipedRight: () => this.setState( {direction: 'RIGHT'} ),
+		preventScrollOnSwipe: true
 	});
 
 	moveSnake = () => {
