@@ -36,22 +36,6 @@ const FooterSfx = () => {
   	);
 };
 
-  const HandlersBox = () => useSwipeable({
-    onSwiped: ({ dir, event }) => {
-      // NOTE: this stops the propagation of the event
-      // from reaching the document swipe listeners
-      event.stopPropagation();
-
-      setBoxSwipes((s) => [
-        ...s,
-        { dir, timeStamp: Math.floor(event.timeStamp) }
-      ]);
-    },
-    // NOTE: another approach via onSwiping
-    // onSwiping: ({ event }) => event.stopPropagation(),
-    preventDefaultTouchmoveEvent: true
-  });
-
 const handleTouch = (key) => {
   handleKeyDown({keyCode:key});
 }
@@ -237,17 +221,6 @@ class Game extends React.Component {
 						}>Play</button>
 					}
 				</div>
-				{this.state.play ?
-      				<div {...HandlersBox} className="p-2 m-2 border-2 border-primary text-white">
-      					<h4>Swipe here for Box</h4>
-      					<h6>
-      				    	Swipe anywhere to trigger document swipe, BUT if you swipe in the box
-      						we'll attempt to prevent the document swipe
-      				  	</h6>
-      				</div>
-				:
-					<></>
-				}
 				<div className="relative flex item-center justify-center w-full text-center">
 					<FooterSfx />
 				</div>
