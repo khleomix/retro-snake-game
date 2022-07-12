@@ -36,20 +36,8 @@ const FooterSfx = () => {
   	);
 };
 
-const handleTouch = (key) => {
-  handleKeyDown({keyCode:key});
-}
-
-const SwipeHandlers = () => useSwipeable({
-  onSwipedLeft: () => handleTouch('37'),
-  onSwipedUp: () => handleTouch('38'),
-  onSwipedRight: () => handleTouch('39'),
-  onSwipedDown: () => handleTouch('40')
-});
-
 class Game extends React.Component {
 	state = initialState
-
 
 	componentDidMount(): void {
 		setInterval(this.moveSnake, this.state.speed)
@@ -80,6 +68,13 @@ class Game extends React.Component {
 				break;
 		}
 	}
+
+	swipeHandlers = () => useSwipeable({
+		onSwipedUp: () => this.setState( {direction: 'UP'} ),
+		onSwipedDown: () => this.setState( {direction: 'DOWN'} ),
+		onSwipedLeft: () => this.setState( {direction: 'LEFT'} ),
+		onSwipedRight: () => this.setState( {direction: 'RIGHT'} ),
+	});
 
 	moveSnake = () => {
 		let dots = [...this.state.snakePixels]
@@ -174,7 +169,7 @@ class Game extends React.Component {
 
 		  		{this.state.play ?
 					<>
-						<div className={`game-box before:bg-game-box outline outline-secondary outline-4 h-96 lg:h-4/6 w-[90vw] lg:w-[50vw] relative before:block before:h-full before:opacity-[0.1] before:w-full before:text-center ${this.state.pause ? "bg-gray-100" : "bg-primary"}`}>
+						<div className={`game-box before:bg-game-box outline outline-secondary outline-4 h-96 lg:h-4/6 w-[90vw] lg:w-[50vw] relative before:block before:h-full before:opacity-[0.1] before:w-full before:text-center ${this.state.pause ? "bg-gray-100" : "bg-primary"}`} {...this.swipeHandlers}>
 							<Snake snakePixels={this.state.snakePixels}/>
 							<Food dot={this.state.food}/>
 							<div className="controller md:hidden absolute w-32 h-32 z-50 right-0 bottom-0">
